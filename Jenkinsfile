@@ -14,6 +14,18 @@ pipeline {
             }
         }
 
+        stage('Debug Versions') {
+            steps {
+                sh '''
+                    echo "JAVA VERSION:"
+                    java -version
+
+                    echo "GRADLE VERSION:"
+                    ./gradlew -v
+                '''
+            }
+        }
+
         stage('Build') {
             steps {
                 sh './gradlew clean build'
